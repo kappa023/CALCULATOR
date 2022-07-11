@@ -1,5 +1,5 @@
 
-export type Operator = "+" | "-"
+export type Operator = "+" | "-" | "/" | "*"
 export type NumberCode = 
 "0" |
 "1" |
@@ -11,7 +11,14 @@ export type NumberCode =
 "7" |
 "8" |
 "9" 
-export type ButtonCode = NumberCode | Operator | "." | "D" | "AC"| "=";
+export type ButtonCode = NumberCode | Operator | "." | "D" | "AC"| "=" ;
+
+export interface State{
+    current:string;
+    operand:number;
+    operator:string | null;
+    isNextClear:boolean;
+}
 
 
 
@@ -53,12 +60,7 @@ return state;
 
 }
 
-export interface State{
-    current:string;
-    operand:number;
-    operator:string | null;
-    isNextClear:boolean;
-}
+
 
 function isNumberButton(button: string) :button is NumberCode{
     return (
@@ -109,7 +111,13 @@ function handleNumberButton(button: NumberCode, state: State): State {
 }
 
 function isOperatorButton(button: string):button is Operator {
-    return button === "+" || button === "-" ;
+    return (
+        button === "+" ||
+        button === "-" ||
+        button === "*" ||
+        button === "/" 
+    );
+    
 }
 
 function handeOperatorButton(button: Operator, state: State): State {
@@ -215,6 +223,14 @@ function operata(state: State):number{
 
    if(state.operator === "-"){
     return state.operand - current
+   }
+
+   if(state.operator === "*"){
+    return state.operand * current
+   }
+
+   if(state.operator === "/"){
+    return state.operand / current
    }
 
    return current;
