@@ -9,6 +9,7 @@ const [state,setState] = useState<State>({
     current:"0",
     operand:0,
     operator:null,
+    formula:"0",
     isNextClear:false
 
 });
@@ -20,7 +21,7 @@ const buttonHandler = (code: ButtonCode) =>{
 
     return (
     <div>
-        <Display value={state.current}/>
+        <Display value={state.current} formula={state.formula}/>
         <ButtonPanel  buttonHandler={buttonHandler}/>
     </div>
     )

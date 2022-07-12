@@ -7,13 +7,13 @@ export default function ButtonPanel(props:{
         <div className="buttonPanel">
             <div>
                 <button className="buttonAll" onClick={() => props.buttonHandler("AC")}>AC</button>
-                <button onClick={() => props.buttonHandler("*")}>*</button>
+                <button onClick={() => props.buttonHandler("*")}>x</button>
             </div>
             <div>
                 <button onClick={() => props.buttonHandler("7")}>7</button>
                 <button onClick={() => props.buttonHandler("8")}>8</button>
                 <button onClick={() => props.buttonHandler("9")}>9</button>
-                <button onClick={() => props.buttonHandler("/")}>/</button>
+                <button onClick={() => props.buttonHandler("/")}>÷</button>
             </div>
             <div>
                 <button onClick={() => props.buttonHandler("4")}>4</button>
